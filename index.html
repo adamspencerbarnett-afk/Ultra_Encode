@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-CwJMKYiqY8rA8mdDXcLJyV8/dXC+kXjyIjmswExs4Mo=' blob: 'wasm-unsafe-eval'; worker-src 'self' blob:; connect-src 'self' blob:; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultra Encode · B3F2 encoders</title>
+<meta name="description" content="Ultra Encode: lossless text compression and compact PDFs with the B3F2 encoders, running in your browser. Files are never uploaded.">
+<meta name="theme-color" content="#05070d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4 56 18v28L32 60 8 46V18z' fill='none' stroke='%2338e1ff' stroke-width='5'/%3E%3C/svg%3E">
+<script src="coi-serviceworker.js"></script>
+<style>html,body{margin:0;min-height:100%;background:#05070d;color:#cfd8ea;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}#ue-boot{position:fixed;inset:0;display:grid;place-items:center;letter-spacing:.2em;font-size:12px;color:#7f8db0}#ue-boot i{display:block;width:44px;height:44px;margin:0 auto 14px;border-radius:50%;border:3px solid rgba(56,225,255,.15);border-top-color:#38e1ff;animation:ue 0.9s linear infinite}@keyframes ue{to{transform:rotate(360deg)}}</style>
+</head>
+<body>
+<div id="ue-boot"><div><i></i>ULTRA ENCODE</div></div>
+<noscript>Ultra Encode runs in your browser and needs JavaScript.</noscript>
+<script>(async()=>{const e=["CNSOkege0lwlFTYSFtsg8zL/znnVPwZTOQC26/gFXBs=","z49niAROhT6dJCPEWUNkyoTjHLe9+wzu4NueuofOnsA=","iczq6Nb7W2nbg20v7ooUug0owez0nA5Z8H+/M1RZ40k=","XgMV3aEn8NpECCuXAjIbihriMsynSACRhy3fEeoKBBU="],t=document.getElementById("ue-boot"),a=e=>Uint8Array.from(atob(e),e=>e.charCodeAt(0));try{const r=await fetch("app.bin",{cache:"no-cache"});if(!r.ok)throw new Error("missing");const n=new Uint8Array(await r.arrayBuffer()),[o,s,c,i]=e.map(a),l=new Uint8Array(80);for(let e=0;e<32;e++)l[e]=o[e]^c[e],l[48+e]=s[e]^i[e];l.set(n.subarray(0,16),32);const y=await crypto.subtle.importKey("raw",await crypto.subtle.digest("SHA-256",l),"AES-GCM",!1,["decrypt"]),u=await crypto.subtle.decrypt({name:"AES-GCM",iv:n.subarray(16,28)},y,n.subarray(28)),b=new Uint8Array(await new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).arrayBuffer()),p=new DataView(b.buffer,b.byteOffset,b.byteLength),w=new TextDecoder,d=new Map;for(let e=p.getUint32(0),t=4;e--;){const e=b[t],a=w.decode(b.subarray(t+1,t+1+e));t+=1+e;const r=p.getUint32(t);d.set(a,b.subarray(t+4,t+4+r)),t+=4+r}const m=e=>w.decode(d.get(e)),g=new Map,f=e=>(g.has(e)||g.set(e,URL.createObjectURL(new Blob([d.get(e)],{type:"text/javascript"}))),g.get(e)),A={glue:f("qHsaGF"),glue_mt:f("GaBXDa"),oom:JSON.parse(m("kjtrVA"))},h=URL.createObjectURL(new Blob([m("fGhssj").replace("__MT_GLUE__",A.glue_mt)],{type:"text/javascript"})),U=Promise.all([WebAssembly.compile(d.get("pJVNlz")).then(e=>{A.module=e}),self.crossOriginIsolated?WebAssembly.compile(d.get("xxftiD")).then(e=>{A.module_mt=e}):null]);t.remove(),document.body.insertAdjacentHTML("afterbegin",m("cZzLMo")),self._xAuILGVBrC={url:f,engine:A,workerUrl:h,ready:U};const B=document.createElement("script");B.src=f("BqObSa"),document.body.append(B)}catch(e){t.textContent="Ultra Encode could not start. Please reload the page."}})();</script>
+</body>
+</html>
